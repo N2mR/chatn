@@ -1,0 +1,35 @@
+<% if logged_in? %>
+    <% if current_user.following %>
+        <div class="margin-top-3">
+            <div class="container">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">User name</th>
+                            <th scope="col">User ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <% if @users %>
+                            <% @users.each do |user| %>
+                                <tr>
+                                    <th scope="row"><%= "・" %></th>
+                                    <td><%= user.name%></td>
+                                    <td><%= "@#{user.search_id}" %></td>
+                                    <td><%= render 'shared/createTalk', user:user %></td>
+                                </tr>
+                            <% end %>
+                    <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <% else %>
+        <div class="container">
+            <div class="no-friend">
+                    <p>友達を追加しましょう</p>
+            </div>
+        </div>
+    <% end %>
+<% end %>

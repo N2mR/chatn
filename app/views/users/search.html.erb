@@ -1,0 +1,36 @@
+<div class="container">
+        <div class="search_user">
+            <%= form_tag(search_users_path,:method => 'get') do %>
+                <%= text_field_tag :search %>
+                <%= submit_tag "search", :name => nil, class:'btn btn-primary' %>
+            <% end %>
+        </div>
+
+    <% if @search_user %>
+
+        <div class="container user-container">
+            <table class="table table-dark">
+                <% if @search_user %>
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">User name</th>
+                            <th scope="col">User ID</th>
+                        </tr>
+                    </thead>
+                <% end %>
+                    <tbody>
+                            <tr>
+                                <th scope="row"><%= "・" %></th>
+                                <td><%= @search_user.name%></td>
+                                <td><%= @search_user.search_id%></td>
+                                <td><%= render 'shared/add' %></td>
+                            </tr>
+                    </tbody>
+            </table>
+        </div>
+    <% end %>
+</div>
+
+
+

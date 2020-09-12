@@ -1,0 +1,15 @@
+current directory: /Users/nnmr/workspace/chatn/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.4.8/ext/bootsnap
+/Users/nnmr/.rbenv/versions/2.5.8/bin/ruby -r ./siteconf20200812-12523-1dv5typ.rb extconf.rb
+creating Makefile
+
+current directory: /Users/nnmr/workspace/chatn/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.4.8/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /Users/nnmr/workspace/chatn/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.4.8/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/nnmr/workspace/chatn/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.4.8/ext/bootsnap
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20200812-12523-k4rs0n/bootsnap

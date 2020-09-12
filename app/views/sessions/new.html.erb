@@ -1,0 +1,23 @@
+<div class="simple-login-container">
+    <% unless logged_in? %>
+        <h2>Login Form</h2>
+        <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <%= f.email_field :email, class:"form-control", placeholder:"Email"%>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <%= f.password_field :password, class:"form-control", placeholder:"Password"%>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <%= f.submit 'login', class:"btn btn-primary"%>
+                </div>
+            </div>
+        <% end %>
+        <%= link_to "Create new account", new_user_path %>
+    <% end %>
+</div>

@@ -1,0 +1,104 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body{
+    font-size: 14px;
+    background-color: white;
+}
+
+//マージントップ
+.margin-top-1{
+    margin-top: 20px;
+}
+.margin-top-3{
+    margin-top: 40px;
+}
+//ナビゲーション
+nav{
+    ul{
+        display: table;
+        margin: 0 auto;
+        padding: 0 ;
+        width: 80%;
+        text-align: center;
+    }
+    li{
+        display: table-cell;
+        min-width: 50px;
+        }
+    a{
+        display: block;
+        width: 100%;
+        text-decoration: none;
+        color: #555;
+        padding-bottom: 5px;
+    }
+    li:hover{
+        color: #E7DA66;
+        border-bottom: 3px solid #F0E475
+    }
+    #dropdown-parent{
+        #dropdown-children{
+            display: none;
+            position: absolute;
+        }
+    }
+}
+
+//ログインフォーム
+
+.simple-login-container{
+    width:300px;
+    max-width:100%;
+    margin:50px auto;
+
+    h2{
+        text-align:center;
+        font-size:20px;
+    }
+    input{
+        width: 300px;
+    }
+    .btn-login{
+        background-color:#FF5964;
+        color:#fff;
+    }
+}
+
+//no friend
+
+.no-friend{
+    p{
+        width: 200px;
+        margin: 30px auto;
+    }
+}
+
+//search_friend
+
+.search_firend{
+    #search{
+        width: 150px;
+    }
+}
+.user-container{
+    border-bottom: 1px, solid black;
+}
+
+//messages
+
+#chat_window{
+    width: 70vw;
+    height: 70vh;
+    background-color: skyblue;
+    overflow: scroll;
+}
+#messages{
+    #user{
+        display: inline-block;
+        background-color: greenyellow;
+    }
+    #other_user{
+        display: inline-block;
+    }
+}

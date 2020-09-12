@@ -1,0 +1,32 @@
+<% if @user %>
+    <div class="margin-top-3">
+        <div class="container">
+        <div class="row">
+            <% if @rooms %>
+                <div class="col-sm">
+                    <table class="table table-striped">
+                        <tbody>
+                            <% @rooms.each do |room| %>
+                            <% other_user = User.find_by(id: room.other_user_id) %>
+                                <tr>                            
+                                    <td><%= other_user.name%></td>
+                                    <td>###ここにメッセージが入ります###</td>
+                                    <td><%= room.created_at %></td>
+                                    <td><%= link_to 'talk', room_path(room.id) %></td>
+                                    <td><%= link_to 'delete', room_path(room.id), method: :delete %></td>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+                </div>
+            <% else %>
+                <div class="text-center">
+                    <p>ルームを追加してトークを開始しましょう</p>
+                </div>
+            <% end %>
+        </div>
+    </div>
+    </div>
+<% else %>
+    <% redirect_to login_url %>
+<% end %>
