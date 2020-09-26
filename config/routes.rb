@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+
   
-  get 'pages/index'
-  get 'pages/show'
-  resources :messages, only: [:index, :create, :destroy]
+  
   resources :rooms, only: [:index, :show, :create, :destroy]
+  resources :messages, only: [:index, :new, :create, :destroy]
+
+  
   resources :relationships, only: [:create, :destroy]
 
   resources :users do

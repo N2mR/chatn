@@ -9,12 +9,26 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 
+//= require rails-ujs
+//= require jquery
+//= require activestorage
+//= require bootstrap #追記
+//= require turbolinks
+//= require_tree .
+
+
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+
+
+window.addEventListener('load', (event) => {
+    $('#send_message').removeAttr("data-disable-with");
+});
 document.addEventListener('turbolinks:load', function() {
 
 
@@ -28,53 +42,59 @@ document.addEventListener('turbolinks:load', function() {
         e.preventDefault();
 
         // ajaxを取得してhtmlを形成する
-        function buildHTML(message) {
-            var content = message.content ? `${ message.content }` : "";
-            var date = message.date ? `${ message.date }` : "";
-            var id = message.id ? `${ message.id }` : "";
-            var html = `<div class="col-xs-offset-8 col-sx-4">
-                            <div id="user message-${ id }">
-                                    <p>${ content }</p>
-                                    <p>${ date }</p>
-                            </div>
-                        </div>`
-          return html;
-        }
+
+        // function buildHTML(message) {
+        //     var content = message.content ? `${ message.content }` : "";
+        //     var date = message.date ? `${ message.date }` : "";
+        //     var id = message.id ? `${ message.id }` : "";
+        //     var html = `<div class="col-xs-offset-8 col-sx-4">
+        //                     <div id="user message-${ id }">
+        //                             <p>${ content }</p>
+        //                             <p>${ date }</p>
+        //                     </div>
+        //                 </div>`
+        //   return html;
+        // }
+
+        //inputからmessageのcontentを取得する
 
         const content = document.getElementById('content');
+
         if(content.value !== null){
             // content を message に代入する
             var message = content.value;
             // 現在のURLを取得して url に代入する
-            //var url = "http://localhost:3000/messages";
-            // データをajax形式でpostする
-            $.ajax({  
-                url: "http://localhost:3000/messages",
-                type: 'POST',
-                data: message,
-                dataType: 'json',
-                processData: false,
-                contentType: false
-            })
-            .done(function(data){
-                var html = buildHTML(data);
-                $('#message_content').append(html);
-                $('#content').val(''); //input内のメッセージを消しています。
-            })
-            .fail(function(data){
-                alert('エラーが発生したためメッセージは送信できませんでした。');
-            })
+            //var url = "/messages.json";
+            //document.location.reload();
+            //データをajax形式でpostする
+            // $.ajax({  
+            //     url: url,
+            //     type: 'POST',
+            //     data: message,
+            //     dataType: 'json',
+            //     processData: false,
+            //     contentType: false
+            // })
+            // .done(function(data){
+            //     var html = buildHTML(data);
+            //     $('#message_content').append(html);
+            //     $('#content').val(''); //input内のメッセージを消しています。
+            // })
+            // .fail(function(data){
+            //     alert('エラーが発生したためメッセージは送信できませんでした。');
+            // })
         }
         
         
     })
 
 
-    //
+    //メッセージボックスを一番下にスクロールした状態にする
 
     function scrollButtom(){
         chat_window.scroll(0, 10000000);
     };
+
     const chat_window = document.getElementById('chat_window');
     if(chat_window !== null){
         scrollButtom();
@@ -103,9 +123,6 @@ document.addEventListener('turbolinks:load', function() {
     //         }
     //     });
     //  };
-
-
-
 
 
 

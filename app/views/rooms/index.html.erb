@@ -6,15 +6,24 @@
                 <div class="col-sm">
                     <table class="table table-striped">
                         <tbody>
-                            <% @rooms.each do |room| %>
-                            <% other_user = User.find_by(id: room.other_user_id) %>
-                                <tr>                            
-                                    <td><%= other_user.name%></td>
-                                    <td>###ここにメッセージが入ります###</td>
-                                    <td><%= room.created_at %></td>
-                                    <td><%= link_to 'talk', room_path(room.id) %></td>
-                                    <td><%= link_to 'delete', room_path(room.id), method: :delete %></td>
-                                </tr>
+                            <% if @rooms.exists? %>
+                                <% @rooms.each do |room| %>
+                                <% other_user = User.find_by(id: room.other_user_id) %>
+                                <!-- もしユーザーが存在しなかった場合roomを削除する -->
+                                <% if other_user.nil? %>
+                                    <% room.destroy %>
+                                <% end %>
+                                <!-- 存在した場合roomを表示する -->
+                                    <tr id="room<%= room.id %>">       
+                                        <td><%= other_user.name %></td>
+                                        <td><%= get_new_message(room) %></td>
+                                        <td><%= room.created_at %></td>
+                                        <td><%= link_to 'talk', room_path(room.id) %></td>
+                                        <td><%= link_to 'delete', room_path(room.id), method: :delete, id:'room_delete', 
+                                                data: { confirm: 'ルームを削除してもよろしいですか？'}, remote: true %>
+                                        </td>
+                                    </tr>
+                                <% end %>
                             <% end %>
                         </tbody>
                     </table>

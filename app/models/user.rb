@@ -8,10 +8,10 @@ class User < ApplicationRecord
     has_many :follower, through: :passive_relationships, source: :follower
 
     #チャットルーム
-    has_many :rooms
+    has_many :rooms, dependent: :destroy
 
     #メッセージ
-    has_many :messages
+    has_many :messages, dependent: :destroy
 
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :email, presence: true, length: {maximum: 225}, format: VALID_EMAIL_REGEX, uniqueness: true

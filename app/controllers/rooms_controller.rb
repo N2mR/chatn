@@ -29,6 +29,8 @@ class RoomsController < ApplicationController
     @room.other_user_id = @other_user.id
     if @room.valid?
       @room.save
+      redirect_to root_url
+      flash.now[:success] = "トークルームを作成しました"
     else
       redirect_to root_url
     end
@@ -40,7 +42,8 @@ class RoomsController < ApplicationController
   end
 
   def destroy
-    Room.find(params[:id]).destroy
+    @room = Room.find(params[:id])
+    @room.destroy
   end
 
   private

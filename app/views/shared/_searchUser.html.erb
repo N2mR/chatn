@@ -11,6 +11,8 @@
             <div class="container user-container">
                 <% if @user.my_friend?(@search_user) %>
                     <% flash.now[:danger] = "このユーザーは登録済みです"%>
+                <% elsif @search_user.id == current_user.id %>
+                    <% flash.now[:danger] = 'エラーが発生しました' %>
                 <% else %>
                     <table class="table table-dark">
                         <p>検索結果：</p>

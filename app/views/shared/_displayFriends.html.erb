@@ -13,11 +13,14 @@
                     <tbody>
                     <% if @users %>
                             <% @users.each do |user| %>
-                                <tr>
+                                <tr id='friend<%= search_relationship_id(@user, user)%>'>
                                     <th scope="row"><%= "・" %></th>
                                     <td><%= user.name%></td>
                                     <td><%= "@#{user.search_id}" %></td>
                                     <td><%= render 'shared/createTalk', user:user %></td>
+                                    <td><%= link_to '削除', relationship_path(user.id),
+                                        method: :delete, data: {confirm: 'フレンドから削除してもよろしいですか？'}, remote: true %>
+                                    </td>
                                 </tr>
                             <% end %>
                     <% end %>
