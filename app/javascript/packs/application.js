@@ -26,67 +26,31 @@ require("jquery")
 
 
 
-window.addEventListener('load', (event) => {
-    $('#send_message').removeAttr("data-disable-with");
-});
+// window.addEventListener('load', (event) => {
+//     $('#send_message').removeAttr("disabled");
+// });
 document.addEventListener('turbolinks:load', function() {
 
+    // message func
 
-    //message function
+    const send_message = document.getElementById('send_message');
+    if(send_message !== null){
+        send_message.addEventListener('click', function(){
+            let content = document.getElementById('content');
+            if(content.value !== null){
+                let createHTML = `<div class="col-xs-offset-8 col-sx-4">
+                                    <div id="user message-<%= @message.id %>">
+                                            <p>${content.value}</p>
+                                            <p>${time()}</p>
+                                    </div>
+                                  </div>`;
+                $('#chat_window').append(createHTML);
+            };
+        });
+    }
 
 
     //追加していく機能
-
-
-    $('#new_message').on('submit', function(e){
-        e.preventDefault();
-
-        // ajaxを取得してhtmlを形成する
-
-        // function buildHTML(message) {
-        //     var content = message.content ? `${ message.content }` : "";
-        //     var date = message.date ? `${ message.date }` : "";
-        //     var id = message.id ? `${ message.id }` : "";
-        //     var html = `<div class="col-xs-offset-8 col-sx-4">
-        //                     <div id="user message-${ id }">
-        //                             <p>${ content }</p>
-        //                             <p>${ date }</p>
-        //                     </div>
-        //                 </div>`
-        //   return html;
-        // }
-
-        //inputからmessageのcontentを取得する
-
-        const content = document.getElementById('content');
-
-        if(content.value !== null){
-            // content を message に代入する
-            var message = content.value;
-            // 現在のURLを取得して url に代入する
-            //var url = "/messages.json";
-            //document.location.reload();
-            //データをajax形式でpostする
-            // $.ajax({  
-            //     url: url,
-            //     type: 'POST',
-            //     data: message,
-            //     dataType: 'json',
-            //     processData: false,
-            //     contentType: false
-            // })
-            // .done(function(data){
-            //     var html = buildHTML(data);
-            //     $('#message_content').append(html);
-            //     $('#content').val(''); //input内のメッセージを消しています。
-            // })
-            // .fail(function(data){
-            //     alert('エラーが発生したためメッセージは送信できませんでした。');
-            // })
-        }
-        
-        
-    })
 
 
     //メッセージボックスを一番下にスクロールした状態にする
@@ -100,29 +64,17 @@ document.addEventListener('turbolinks:load', function() {
         scrollButtom();
     }
 
-    // const send_message = document.getElementById('send_message');
+    // get time func
+    function time(){
+        DD = new Date();
+        Year = DD.getFullYear();
+        Month = DD.getMonth() + 1;
+        Day = DD.getDate();
+        return `${Year}-${Month}-${Day}`
+    };
+    
 
-    // if(send_message !== null){
-    //     send_message.addEventListener('click', function(){
-    //     const content = document.getElementById('content');
-    //         if(content.value !== null){
-
-    //             //content の value
-    //             let content_value = content.value;
-    //             //送信日時
-            
-    //             //HTMLの生成
-    //             $('#chat_window').append(`<div class="col-xs-offset-8 col-sx-4">
-    //                                         <div id="user">
-    //                                             <p>${content_value}</p>
-    //                                             <p>time</p>
-    //                                         </div>
-    //                                       </div>`)
-    //             scrollButtom();
-    //             content.value = ''
-    //         }
-    //     });
-    //  };
+    
 
 
 

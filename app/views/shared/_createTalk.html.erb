@@ -1,7 +1,7 @@
 <% @other_user = user %>
 
 <% if findRoom %>
-    <%= link_to 'トーク', room_path(findRoom), class:'btn btn-primary' %>
+    <%= link_to 'トーク', room_path(findRoom), class:'btn btn-primary talk_button' %>
 <% else %>
     <%= form_with(url: rooms_path, method: :post, local: true) do |f| %>
         <%= f.hidden_field :other_user_id, :value => user.id %>

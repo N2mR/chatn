@@ -92,13 +92,27 @@ nav{
     height: 70vh;
     background-color: skyblue;
     overflow: scroll;
-}
-#messages{
-    #user{
-        display: inline-block;
-        background-color: greenyellow;
+    .message_container{
+        .message{
+            margin: 0 auto;
+        }
+        .users_message{
+            text-align: right;
+            p{
+                color: red;
+            }
+        }
+        .other_users_message{
+            text-align: left;
+        }
     }
-    #other_user{
-        display: inline-block;
-    }
 }
+// #messages{
+//     #user{
+//         display: inline-block;
+//         background-color: greenyellow;
+//     }
+//     #other_user{
+//         display: inline-block;
+//     }
+// }

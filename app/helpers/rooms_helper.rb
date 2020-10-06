@@ -1,13 +1,16 @@
 module RoomsHelper
-    def get_new_message(room)
-        @other_user_id = room.other_user_id
-        @messages = room.messages.where(user_id: current_user.id, other_user_id: @other_user_id)
-        
-        # if @messages
-        #     @message = @messages.first
-        #     @message.content
-        # else
-        #     return 'メッセージがありません'
-        # end
+    def get_newest_message(room)
+        @message = room.messages.last
+        if @message
+            
+            if @message.user_id == current_user.id
+                return "あなた: #{@message.content}"
+            else
+                @other_user = User.find(@message.user_id)
+                return "#{@other_user.name}: #{@message.content}"
+            end
+        else
+            'メッセージがありません'
+        end
     end
 end

@@ -1,5 +1,9 @@
+ <!--
  <%= form_with(url: messages_path, id:'new_message') do |f| %>
     <%= f.hidden_field :room_id, value: @room.id %>
     <%= f.text_field :content, rows: 10 %>
-    <%= f.submit '送信', class: 'btn btn-primary', id:'send_message' %>
+    <%= f.submit '送信', class: 'btn btn-primary', id:'send_message', 'data-disable-with' => false %>
  <% end %>
+ -->
+
+ <%= text_field_tag :content, nil, data: { behavior: 'room_speaker' } %>

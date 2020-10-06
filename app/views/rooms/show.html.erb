@@ -4,7 +4,7 @@
             <%= @other_user.name %>
         </div>
 
-        <div class="container messages">
+        <div id='room' class="container messages" data-room_id='<%= @room.id %>' data-current_user='<%= current_user.id%>' data-other_user='<%= @other_user.id %>'>
             <div id="chat_window">
                 <%= render 'messages/message' %>
             </div>

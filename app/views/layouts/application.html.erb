@@ -12,6 +12,7 @@
   <body>
     <%= render 'layouts/header' %>
     <%= render 'shared/flash' %>
+    <%= render 'layouts/logged_in' if logged_in? %>
     <%= yield %>
   </body>
 </html>

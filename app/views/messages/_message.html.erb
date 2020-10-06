@@ -2,20 +2,19 @@
     <div class="row" id="message_container">
         <% @messages.each do |message| %>
             <% if message.user_id == current_user.id %>
-                <div class="col-xs-offset-8 col-sx-4">
-                    <div id="user message-<%= message.id %>">
+                <div class="other_users_message message col-sm-offset-8 col-sm-4">
+                    <div id="message-<%= message.id %>">
                             <p><%= message.content %></p>
                             <p><%= message.created_at %></p>
                     </div>
                 </div>
             <% else %>
-                <div class="col-xs-4">
-                    <div id="other_user message-<%= message.id %>">
+                <div class="other_users_message message col-sm-offset-1">
+                    <div id="message-<%= message.id %>">
                             <p><%= message.content %></p>
                             <p><%= message.created_at %></p>
                     </div>
                 </div>
-                <div class="col-xs-offset-8"></div>
             <% end %>
         <% end %>
     </div>

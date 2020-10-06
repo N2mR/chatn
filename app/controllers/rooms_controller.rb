@@ -11,7 +11,7 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-    create_session_room
+    #create_session_room
     @other_user = User.find(@room.other_user_id)
     @user = User.find(current_user.id)
     @messages = Message.where(room_id: @room.id).order(room_id: "DESC")
