@@ -13,10 +13,13 @@ class User < ApplicationRecord
     #メッセージ
     has_many :messages, dependent: :destroy
 
+    #タイムライン
+    has_many :timelines, dependent: :destroy
+
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :email, presence: true, length: {maximum: 225}, format: VALID_EMAIL_REGEX, uniqueness: true
     validates :password, presence: true, length: {minimum: 8}, length: {maximum: 50}
-    validates :search_id, presence: true, length: {maximum: 4}, length: {maximum: 15}, uniqueness: true
+    validates :search_id, presence: true, length: {mimimum: 4}, length: {maximum: 10}, uniqueness: true
 
 
 

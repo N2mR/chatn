@@ -13,15 +13,19 @@ document.addEventListener("turbolinks:load", function(){
   
     received: function(data) {
       var room = document.getElementById('room');
+      let chat_window = document.getElementById('chat_window');
       if(room){
-        let createHTML = `<div class="other_users_message message col-sm-offset-1">
-                            <div>
-                              <p>${data['message']}</p>
-                              <p>${data['created_at']}</p>
+        let createHTML = `<div class="message_left">
+                            <div class="other_users_message message">
+                              <div>
+                                <p>${data['message']}</p>
+                                <p>${data['created_at']}</p>
+                              </div>
                             </div>
                           </div>`;
         $('#chat_window').append(createHTML);
         scrollBottom(chat_window);
+        createHTML = '';
       }
       //return alert(data['message']);
     },
@@ -42,59 +46,48 @@ document.addEventListener("turbolinks:load", function(){
 
   });
 
-  //チャットウィンドウを一番下までスクロールする
-  const chat_window = document.getElementById('chat_window');
+  //チャットウィンドウ
+  let window = document.getElementById('chat_window');
+  //トークボタン
   const talk_button = document.querySelector('.talk_button');
 
+  //トークのクリック時、room_channel.rbのsubscribedを実行
   if(talk_button){
     talk_button.addEventListener('click', function(){
       chatChannel.loadUserData();
     });
   }
 
-  function reload(){
-    if(window.name != 'loaded'){
-        window.location.reload()
-        window.name = 'loaded';
-    }else if(window.name == 'loaded'){
-        window.location.reload()
-        window.name = '';
-    }
-  }
+  
 
-document.addEventListener("turbolinks:load", function(){
-    reload();
-})
+
+  
+
+  
+  // document.addEventListener("turbolinks:load", function(){
+  //     reload();
+  // });
+
+  //一番下までスクロール
   function scrollBottom(object){
     object.scroll(0,10000000)
   };
 
 
-  // let getRoomData = {
-  //   getCurrentUser: function(){
-  //     let current_user_id = $('#room').data('current_user')
-  //     return current_user_id
-  //   },
-  //   getOtherUser: function(){
-  //     let other_user_id = $('#room').data('other_user')
-  //     return other_user_id
-  //   },
-  //   getRoomId: function(){
-  //     let room_id = $('#room').data('room_id')
-  //     return room_id
-  //   }
-  // };
 
-    function getRoomData(message){
-      var current_user_id = $('#room').data('current_user')
-      var other_user_id = $('#room').data('other_user')
-      var room_id = $('#room').data('room_id')
-      var data = { current_user_id: current_user_id, other_user_id: other_user_id, room_id: room_id, message: message }
-      return data
-    }
+
+  //チャットルームのdata属性からユーザーのデータを取得
+  function getRoomData(message){
+    var current_user_id = $('#room').data('current_user')
+    var other_user_id = $('#room').data('other_user')
+    var room_id = $('#room').data('room_id')
+    var data = { current_user_id: current_user_id, other_user_id: other_user_id, room_id: room_id, message: message }
+    return data
+  }
 
   chatChannel.cookies();
 
+  //現在時刻を取得
   function get_current_time(){
     var DD = new Date();
     var Year = DD.getFullYear();
@@ -106,26 +99,27 @@ document.addEventListener("turbolinks:load", function(){
   };
   
 
-  //
+  //メッセージの送信・自分のルームにメッセージを非同期で追加
   $(document).on('keypress', '[data-behavior~=room_speaker]', function(event) {
     if (event.keyCode === 13) {
       var content = event.target.value;
-      var createHTML = `<div class="other_users_message message col-sm-offset-8 col-sm-4">
-                          <div id="message-">
-                                  <p>${content}</p>
-                                  <p>${get_current_time()}</p>
+      var createHTML = `<div class="message_right">
+                          <div class="users_message message">
+                            <div>
+                                <p>${content}</p>
+                                <p>${get_current_time()}</p>
+                            </div>
                           </div>
                         </div>`
       $('#chat_window').append(createHTML);
+      let chat_window = document.getElementById('chat_window');
       scrollBottom(chat_window);
-      chatChannel.speak(getRoomData(content));
+      let room_data = getRoomData(content);
+      chatChannel.speak(room_data);
       event.target.value = '';
+      createHTML = '';
       // return event.preventDefault();
     }
   });
 
-  // if($('#logged_in').data('logged_in')){
-  //   var user_id = $('#logged_in').data('logged_in')
-  //   chatChannel.cookies(user_id)
-  // };
 })

@@ -4,45 +4,276 @@
 body{
     font-size: 14px;
     background-color: white;
+    margin: 0;
 }
 
-//マージントップ
-.margin-top-1{
-    margin-top: 20px;
-}
-.margin-top-3{
-    margin-top: 40px;
-}
-//ナビゲーション
-nav{
-    ul{
-        display: table;
-        margin: 0 auto;
-        padding: 0 ;
-        width: 80%;
-        text-align: center;
-    }
-    li{
-        display: table-cell;
-        min-width: 50px;
+
+@media screen and (min-width: 200px){
+    //ヘッダー
+    header {
+        background: #333;
+        padding: .5rem;
+        text-align: right;
+        #logo{
+            float: left;
+            color: #fff;
+            margin-left: 5%;
+            a{
+                color: white;
+                text-decoration: none;
+            }
         }
-    a{
-        display: block;
-        width: 100%;
-        text-decoration: none;
-        color: #555;
-        padding-bottom: 5px;
-    }
-    li:hover{
-        color: #E7DA66;
-        border-bottom: 3px solid #F0E475
-    }
-    #dropdown-parent{
-        #dropdown-children{
-            display: none;
+
+        nav {
+            background: royalblue;
             position: absolute;
+            z-index: 1;
+            top: 3.125rem;
+            right: 0;
+            overflow-x: hidden;
+            text-align: center;
+            width: 0;
+            transition: .5s;
+
+            li {
+                margin: 2rem 0;
+                list-style: none;
+                a {
+                    color: #fff;
+                    text-decoration: none;
+                    white-space: nowrap;
+                }
+            }
+        }
+         
+        /* ボタン */
+        .btn-menu {
+            margin-right: 5%;
+            border: 1px solid #999;
+            background: transparent;
+            color: #fff;
+            padding: .5rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+        
+        /* メニュー */
+        nav.open-menu{
+            width: 100%;
         }
     }
+
+    //ユーザー検索フォーム
+    .search_user_form{
+        max-width: 700px;
+        width: 70%;
+        border-radius: 3px;
+        border: solid 2px gray;
+    }
+    .search_user_btn{
+        display: inline-block;
+        max-width: 200px;
+        width: 20%;
+        padding: 0.3em 1em;
+        text-decoration: none;
+        color: royalblue;
+        background-color: white;
+        border: solid 2px royalblue;
+        border-radius: 3px;
+        transition: .4s;
+        &:hover{
+            background-color: royalblue;
+            color: white;
+        }
+    }
+    
+    //フレンド一覧
+    .your_friends{
+        text-align: center;
+        margin: 2vh auto;
+    }
+    .display_friends{
+        .friend_data{
+            display: flex;
+            margin: 0;
+            min-width: 200px;
+            max-width: 1400px;
+            width: 100%;
+            padding: 10px 0;
+            border-bottom: 1px dotted black;
+
+            li{
+                margin: 0 auto;
+                list-style: none;
+                max-width: 300px;
+                min-width: 50px;
+            }
+            a{
+                text-decoration: none;
+            }
+            .user_name{
+                text-align: center;
+                width: 25vw;
+            }
+            .user_id{
+                width: 25vw;
+            }
+            .talk{
+                width: 20vw;
+                a{
+                    color:royalblue;
+                    &:hover{
+                        border-bottom: 1px solid royalblue;
+                    }
+                }
+                .create_talk{
+                    box-sizing: border-box;
+                    border: 0px;
+                    background-color: white;
+                    color: royalblue;
+                    &:hover{
+                        border-bottom: 1px solid royalblue;
+                    }
+                }
+            }
+
+            .delete_user{
+                width: 20vw;
+              a{
+                color: crimson;
+                &:hover{
+                    border-bottom: 1px solid crimson;
+                }
+              }  
+            } 
+           
+        }
+    }
+
+    //チャットルーム一覧
+    .display_rooms{
+        .room_data{
+            display: flex;
+            margin: 0;
+            min-width: 200px;
+            max-width: 1400px;
+            width: 100%;
+            padding: 10px 0;
+            border-bottom: 1px dotted black;
+
+            li{
+                margin: 0 2vw;
+                list-style: none;
+                max-width: 300px;
+                min-width: 50px;
+            }
+            .room_data_user_name{
+                width: 20vw;
+                text-align: center;
+            }
+            .room_data_message{
+                width: 20vw;
+            }
+            .room_data_created_at{
+                width: 20vw;
+            }
+            .room_data_talk{
+                width: 15vw;
+                box-sizing: border-box;
+                border: 0px;
+                background-color: white;
+                color: royalblue;
+            }
+            .room_data_delete{
+                width: 15vw;
+                a{
+                    color: crimson;
+                }
+            }
+            
+        }
+    }
+
+    //messages
+
+    .talk_room{
+        .other_user_name{
+            margin: 3vh 0 3vh 3vw;
+        }
+        //チャットウィンドウ
+        #chat_window{
+            width: 90vw;
+            height: 70vh;
+            min-width: 200px;
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: silver;
+            overflow: scroll;
+            .message_container{
+                //自分のメッセージと相手のメッセージの共通してる要素のスタイル
+                .message{
+                    text-align: center;
+                    word-wrap: break-word;
+                    max-width: 250px;
+                    min-width: 150px;
+                    width: 50vw;
+                    padding: 0.5vh 1vh;
+                    border-radius: 8px;
+                    display: inline-block;
+                }
+                //自分のメッセージ
+                .message_right{
+                    text-align: right;
+                    .users_message{
+                        margin: 1.5vh 5vw 1.5vh 0;
+                        background-color: limegreen;
+                    }
+                }
+                //相手のメッセージ
+                .message_left{
+                    text-align: left;
+                    .other_users_message{
+                        margin: 1.5vh 0 1.5vh 5vw;
+                        background-color: darkgray;
+                    }
+                }
+            }
+        }
+    
+    }
+
+    //非同期通信で追加するメッセージ
+    .message{
+        text-align: center;
+        word-wrap: break-word;
+        max-width: 250px;
+        min-width: 150px;
+        width: 50vw;
+        padding: 0.5vh 1vh;
+        border-radius: 8px;
+        display: inline-block;
+    }
+    //自分のメッセージ
+    .message_right{
+        text-align: right;
+        .users_message{
+            margin: 1.5vh 5vw 1.5vh 0;
+            background-color: limegreen;
+        }
+    }
+    //相手のメッセージ
+    .message_left{
+        text-align: left;
+        .other_users_message{
+            margin: 1.5vh 0 1.5vh 5vw;
+            background-color: darkgray;
+        }
+    }
+}
+
+
+@media screen and (min-width: 500px){
 }
 
 //ログインフォーム
@@ -85,28 +316,7 @@ nav{
     border-bottom: 1px, solid black;
 }
 
-//messages
 
-#chat_window{
-    width: 70vw;
-    height: 70vh;
-    background-color: skyblue;
-    overflow: scroll;
-    .message_container{
-        .message{
-            margin: 0 auto;
-        }
-        .users_message{
-            text-align: right;
-            p{
-                color: red;
-            }
-        }
-        .other_users_message{
-            text-align: left;
-        }
-    }
-}
 // #messages{
 //     #user{
 //         display: inline-block;

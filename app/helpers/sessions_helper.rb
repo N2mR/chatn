@@ -43,4 +43,10 @@ module SessionsHelper
     def destroy_session_room
         session[:room] = nil
     end
+
+    #ユーザIDからユーザを探す
+    def find_user(id)
+        @user = User.find(id)
+        @user
+    end
 end

@@ -1,33 +1,23 @@
 <% if logged_in? %>
-    <% if current_user.following %>
-        <div class="margin-top-3">
-            <div class="container">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">User name</th>
-                            <th scope="col">User ID</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <% if @users %>
-                            <% @users.each do |user| %>
-                                <tr id='friend<%= search_relationship_id(@user, user)%>'>
-                                    <th scope="row"><%= "・" %></th>
-                                    <td><%= user.name%></td>
-                                    <td><%= "@#{user.search_id}" %></td>
-                                    <td><%= render 'shared/createTalk', user:user %></td>
-                                    <td><%= link_to '削除', relationship_path(user.id),
-                                        method: :delete, data: {confirm: 'フレンドから削除してもよろしいですか？'}, remote: true %>
-                                    </td>
-                                </tr>
-                            <% end %>
-                    <% end %>
-                    </tbody>
-                </table>
+    <% if @users.any? %>
+        <div class="container">
+            <div class="your_friends">
+                <p>FRIEND</p>
             </div>
-        </div>
+            <div class="display_friends">
+                <% @users.each do |user| %>
+                    <ul class="friend_data" id="friend<%= search_relationship_id(@user, user)%>">
+                        <li class="user_name"><%= user.name %></li>
+                        <li class="user_id"><%= "@#{user.search_id}"%></li>
+                        <li class="talk"><%= render 'shared/createTalk', user:user %></li>
+                        <li class="delete_user">
+                            <%= link_to '削除', relationship_path(user.id),
+                                method: :delete, data: {confirm: 'フレンドから削除してもよろしいですか？'}, remote: true %>
+                        </li>
+                    </ul>
+                <% end %>
+            </div>
+         </div>
     <% else %>
         <div class="container">
             <div class="no-friend">

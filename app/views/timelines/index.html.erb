@@ -1,0 +1,15 @@
+<%= render 'form' %>
+
+<div class="container">
+    <% if @timelines %>
+        <% @timelines.each do |timeline| %>
+            <div class="timeline-block">
+                <p><%= find_user(timeline.user_id).name %></p>
+                <p><%= timeline.content %></p>
+                <p><%= timeline.created_at %></p>
+            </div>
+        <% end %>
+    <% else %>
+        <p>投稿がありません</p>
+    <% end %>
+</div>

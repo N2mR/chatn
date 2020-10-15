@@ -26,31 +26,23 @@ require("jquery")
 
 
 
-// window.addEventListener('load', (event) => {
-//     $('#send_message').removeAttr("disabled");
-// });
 document.addEventListener('turbolinks:load', function() {
 
-    // message func
 
-    const send_message = document.getElementById('send_message');
-    if(send_message !== null){
-        send_message.addEventListener('click', function(){
-            let content = document.getElementById('content');
-            if(content.value !== null){
-                let createHTML = `<div class="col-xs-offset-8 col-sx-4">
-                                    <div id="user message-<%= @message.id %>">
-                                            <p>${content.value}</p>
-                                            <p>${time()}</p>
-                                    </div>
-                                  </div>`;
-                $('#chat_window').append(createHTML);
-            };
+    //navigation
+    
+    if(document.querySelector('.btn-menu') != null){
+        const btn = document.querySelector('.btn-menu');
+        const nav = document.querySelector('nav');
+        btn.addEventListener('click', () => {
+            nav.classList.toggle('open-menu')
+            if (btn.innerHTML === 'menu') {
+                btn.innerHTML = '×';
+            } else {
+                btn.innerHTML = 'menu';
+            }
         });
     }
-
-
-    //追加していく機能
 
 
     //メッセージボックスを一番下にスクロールした状態にする
@@ -64,20 +56,11 @@ document.addEventListener('turbolinks:load', function() {
         scrollButtom();
     }
 
-    // get time func
-    function time(){
-        DD = new Date();
-        Year = DD.getFullYear();
-        Month = DD.getMonth() + 1;
-        Day = DD.getDate();
-        return `${Year}-${Month}-${Day}`
-    };
-    
-
-    
-
-
-
+    //画面サイズに応じて表示するメッセージの長さを調節する
+    let room_data_message = document.querySelector('.room_data_message');
+    if(room_data_message != null){
+        $('.room_data_message').css('overflow', 'hidden');
+    }
 
 });
 

@@ -1,9 +1,9 @@
 <div class="margin-top-1">
     <div class="container">
-        <div class="search_user text-right">
+        <div class="search_user text-center">
             <%= form_tag(users_path,:method => 'get') do %>
-                <%= text_field_tag :search, '', class:'form-control', placeholder:'search user' %>
-                <%= submit_tag "search", :name => nil, class:'btn btn-primary form-control' %>
+                <%= text_field_tag :search, '', class:'search_user_form', placeholder:'search user' %>
+                <%= submit_tag "検索", :name => nil, class:'search_user_btn' %>
             <% end %>
         </div>
 
@@ -14,24 +14,14 @@
                 <% elsif @search_user.id == current_user.id %>
                     <% flash.now[:danger] = 'エラーが発生しました' %>
                 <% else %>
-                    <table class="table table-dark">
-                        <p>検索結果：</p>
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">User name</th>
-                                <th scope="col">User ID</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                                <tr>
-                                    <th scope="row"><%= "・" %></th>
-                                    <td><%= @search_user.name%></td>
-                                    <td><%= @search_user.search_id%></td>
-                                    <td><%= render 'shared/add' %></td>
-                                </tr>
-                        </tbody>
-                    </table>
+                <p>検索結果：</p>
+                    <div class="display_friends">
+                        <ul class="friend_data">
+                            <li class="user_name"><%= @search_user.name %></li>
+                            <li class="user_id"><%= "@#{@search_user.search_id}"%></li>
+                            <li><%= render 'shared/add' %></li>
+                         </ul>
+                    </div>
                 <% end %>
             </div>
         <% end %>

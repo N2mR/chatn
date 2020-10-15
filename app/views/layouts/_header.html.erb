@@ -1,10 +1,16 @@
 <% if current_user %>
-  <nav>
-    <ul>
-      <li><%= link_to 'Friends',  users_path %></li>
-      <li><%= link_to 'Talk', rooms_path %></li>
-      <li><%= link_to 'Timeline', '#' %></li>
-      <li><%= link_to 'Logout', logout_path, method: :delete, data: { confirm: "ログアウトしますか？" } %></li>
-    </ul>
-  </nav>
+  <header>
+    <div id="logo">
+      <%= link_to 'ChatN', root_path %>
+    </div>
+    <button class="btn-menu">menu</button>
+    <nav>
+      <ul>
+          <li><%= link_to 'Friends',  users_path %></li>
+          <li><%= link_to 'Talk', rooms_path %></li>
+          <li><%= link_to 'Timeline', timelines_path %></li>
+          <li><%= link_to 'Logout', logout_path, method: :delete, data: { confirm: "ログアウトしますか？" } %></li>
+      </ul>
+    </nav>
+  </header>
 <% end %>

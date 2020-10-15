@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   
-  
   resources :rooms, only: [:index, :show, :create, :destroy]
   resources :messages, only: [:index, :new, :create, :destroy]
+  resources :timelines, only: [:index, :create, :destroy]
 
   
   resources :relationships, only: [:create, :destroy]

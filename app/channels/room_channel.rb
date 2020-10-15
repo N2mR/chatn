@@ -49,7 +49,6 @@ class RoomChannel < ApplicationCable::Channel
                                      other_user_id: @other_user.id , content: @content)
         @other_message.save
         send_message_with_action_cable(@other_message)
-        
       end
       
     else
