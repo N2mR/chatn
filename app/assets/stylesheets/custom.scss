@@ -153,12 +153,17 @@ body{
 
     //チャットルーム一覧
     .display_rooms{
+        .talk{
+            font-weight: bold;
+            margin: 2vh 3vw; 
+        }
         .room_data{
             display: flex;
             margin: 0;
             min-width: 200px;
             max-width: 1400px;
             width: 100%;
+            margin: 3vh auto;
             padding: 10px 0;
             border-bottom: 1px dotted black;
 
@@ -183,7 +188,7 @@ body{
                 box-sizing: border-box;
                 border: 0px;
                 background-color: white;
-                color: royalblue;
+                color: skyblue;
             }
             .room_data_delete{
                 width: 15vw;
@@ -209,6 +214,7 @@ body{
             max-width: 1100px;
             margin: 0 auto;
             background-color: silver;
+            border: grey solid 1px;
             overflow: scroll;
             .message_container{
                 //自分のメッセージと相手のメッセージの共通してる要素のスタイル
@@ -227,7 +233,7 @@ body{
                     text-align: right;
                     .users_message{
                         margin: 1.5vh 5vw 1.5vh 0;
-                        background-color: limegreen;
+                        background-color: skyblue;
                     }
                 }
                 //相手のメッセージ
@@ -240,6 +246,37 @@ body{
                 }
             }
         }
+        .text_message_area{
+            width: 90vw;
+            height: 30px;
+            min-width: 200px;
+            max-width: 1100px;
+            margin: 10px auto;
+            display: flex;
+            .message_form{
+                width: 79vw;
+                height: 100%;
+                margin: auto 0;
+                opacity: 0.7;
+                textarea{
+                    width: 100%;
+                }
+            }
+            .send_message_btn{
+                width: 19%;
+                height: 100%;
+                margin: auto 0;
+                input{
+                    width: 100%;
+                    background-color: royalblue;
+                    //border: solid 1px black;
+                    padding: auto ;
+                    border: 2px solid royalblue;
+                }
+            }
+
+        }
+        
     
     }
 
@@ -254,15 +291,15 @@ body{
         border-radius: 8px;
         display: inline-block;
     }
-    //自分のメッセージ
+    //自分のメッセージ(非同期)
     .message_right{
         text-align: right;
         .users_message{
             margin: 1.5vh 5vw 1.5vh 0;
-            background-color: limegreen;
+            background-color: skyblue;
         }
     }
-    //相手のメッセージ
+    //相手のメッセージ（非同期）
     .message_left{
         text-align: left;
         .other_users_message{
@@ -270,6 +307,69 @@ body{
             background-color: darkgray;
         }
     }
+
+
+    .timeline{
+        //Timeline Logo
+        .timeline_logo{
+            font-weight: bold;
+            margin: 2vh 3vw; 
+        }
+        //Timeline送信フォーム
+        .post_timeline_area{
+            min-width: 150px;
+            max-width: 900px;
+            margin: 20px auto;
+            form{
+                width: 70%;
+                height: 30px;
+                margin: 10px auto;
+                display: flex;
+                .timeline_form{
+                    width: 80%;
+                    height: 100%;
+                    opacity: 0.7;
+                    textarea{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .post_timeline_btn{
+                    width: 20%;
+                    height: 100%;
+                    input{
+                        width: 100%;
+                        height: 100%;
+                        background-color: royalblue;
+                        border: 2px solid royalblue;
+                        border-radius: 3px;
+                    }
+                }  
+            }
+        }
+
+        //Timeline表示
+        .display_timeline{
+            .timeline_container{
+                width: 70%;
+                margin: 5vh auto;
+                text-align: left;
+                .timeline_user_name{
+                   width: 50%;
+                   margin: 0 auto;
+                }
+                .timeline_content{
+
+                }
+                .timeline_created_at{
+
+                }
+            }
+        }
+    }
+    
+
+
 }
 
 

@@ -1,10 +1,8 @@
-<div class="container">
-    <div class="row">
-        <div class="col-xs-offset-2 col-xs-8">
-            <%= form_with(url: timelines_path, local: true) do |f| %>
-                <%= f.text_area :content, class:'form-controll' %>
-                <%= f.submit '>', class:'btn btn-primary'%>
-            <% end %>
-        </div>
+<%= form_with(url: timelines_path, local: true) do |f| %>
+    <div class="timeline_form">
+        <%= f.text_area :content, rows:'2', placeholder: 'タイムラインを投稿' %>
     </div>
-</div>
+    <div class="post_timeline_btn">
+        <%= f.submit '>' %>
+    </div>
+<% end %>

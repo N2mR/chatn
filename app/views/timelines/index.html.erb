@@ -1,15 +1,23 @@
-<%= render 'form' %>
+<div class="container timeline">
+    <div class="timeline_logo">
+        Timeline
+    </div>
 
-<div class="container">
-    <% if @timelines %>
-        <% @timelines.each do |timeline| %>
-            <div class="timeline-block">
-                <p><%= find_user(timeline.user_id).name %></p>
-                <p><%= timeline.content %></p>
-                <p><%= timeline.created_at %></p>
-            </div>
+    <div class="post_timeline_area">
+        <%= render 'form' %>
+    </div>
+
+    <div class="display_timeline">
+        <% if @timelines %>
+            <% @timelines.each do |timeline| %>
+                <div class="timeline_container">
+                    <p><%= find_user(timeline.user_id).name %></p>
+                    <p><%= timeline.content %></p>
+                    <p><%= timeline.created_at %></p>
+                </div>
+            <% end %>
+        <% else %>
+                <p>投稿がありません</p>
         <% end %>
-    <% else %>
-        <p>投稿がありません</p>
-    <% end %>
+    </div>
 </div>

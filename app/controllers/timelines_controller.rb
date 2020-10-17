@@ -13,7 +13,8 @@ class TimelinesController < ApplicationController
       @timeline.save
       redirect_to timelines_url
     else
-      flash.now[:danger] = 'タイムラインの投稿に失敗しました'
+      flash[:danger] = 'タイムラインの投稿に失敗しました'
+      redirect_to timelines_url
     end
   end
 

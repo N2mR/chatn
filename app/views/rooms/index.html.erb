@@ -8,6 +8,9 @@
                 <div class="container">
                     <div class="display_rooms">
                         <% if @rooms.exists? %>
+                            <div class="talk">
+                                Talk
+                            </div>
                             <% @rooms.each do |room| %>
                                 <% other_user = User.find_by(id: room.other_user_id) %>
                                 <% if other_user.nil? %>

@@ -6,4 +6,9 @@
  <% end %>
  -->
 
- <%= text_field_tag :content, nil, data: { behavior: 'room_speaker' } %>
+<div class="message_form">
+   <textarea name="content" id="content" data-behavior="room_speaker" rows="1" placeholder="メッセージを送信"></textarea>
+</div>
+<div class="send_message_btn">
+   <input type="button" value=">">
+</div>
