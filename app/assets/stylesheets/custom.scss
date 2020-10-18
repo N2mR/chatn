@@ -8,7 +8,7 @@ body{
 }
 
 
-@media screen and (min-width: 200px){
+@media screen and (min-width: 150px){
     //ヘッダー
     header {
         background: #333;
@@ -358,12 +358,12 @@ body{
                    width: 50%;
                    margin: 0 auto;
                 }
-                .timeline_content{
+                // .timeline_content{
 
-                }
-                .timeline_created_at{
+                // }
+                // .timeline_created_at{
 
-                }
+                // }
             }
         }
     }
@@ -373,7 +373,14 @@ body{
 }
 
 
-@media screen and (min-width: 500px){
+@media screen and (min-width: 960px){
+    // nav{
+    //     ul{
+    //         display: flex;
+    //     }
+    // }
+    
+
 }
 
 //ログインフォーム

@@ -99,11 +99,38 @@ document.addEventListener("turbolinks:load", function(){
   };
   
 
-  //メッセージの送信・自分のルームにメッセージを非同期で追加
-  $(document).on('keypress', '[data-behavior~=room_speaker]', function(event) {
-    if (event.keyCode === 13) {
-      var content = event.target.value;
-      var createHTML = `<div class="message_right">
+  // //メッセージの送信・自分のルームにメッセージを非同期で追加
+  // $(document).on('keypress', '[data-behavior~=room_speaker]', function(event) {
+  //   if (event.keyCode === 13) {
+  //     var content = event.target.value;
+  //     var createHTML = `<div class="message_right">
+  //                         <div class="users_message message">
+  //                           <div>
+  //                               <p>${content}</p>
+  //                               <p>${get_current_time()}</p>
+  //                           </div>
+  //                         </div>
+  //                       </div>`
+  //     $('#chat_window').append(createHTML);
+  //     let chat_window = document.getElementById('chat_window');
+  //     scrollBottom(chat_window);
+  //     let room_data = getRoomData(content);
+  //     chatChannel.speak(room_data);
+  //     event.target.value = '';
+  //     createHTML = '';
+  //     // return event.preventDefault();
+  //   }
+  // });
+
+
+  let talk_room = document.querySelector('.talk_room');
+  if(talk_room != null){
+    var send_message_form = document.getElementById('send_message_form');
+    var send_message_btn = document.getElementById('send_message_btn');
+    send_message_btn.addEventListener('click', function(){
+      var content = send_message_form.value;
+      if(1 <= content.length　&& content.length < 140){
+        var createHTML = `<div class="message_right">
                           <div class="users_message message">
                             <div>
                                 <p>${content}</p>
@@ -116,10 +143,12 @@ document.addEventListener("turbolinks:load", function(){
       scrollBottom(chat_window);
       let room_data = getRoomData(content);
       chatChannel.speak(room_data);
-      event.target.value = '';
+      send_message_form.value = '';
       createHTML = '';
       // return event.preventDefault();
-    }
-  });
-
+      }else if(content.length >= 140){
+        send_message_form.value = '';
+      }
+    })
+  }
 })
