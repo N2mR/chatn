@@ -19,7 +19,13 @@ development:
 test:
   <<: *default
   database: db/test.sqlite3
+#変更前
+# production:
+#   <<: *default
+#   database: db/production.sqlite3
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
