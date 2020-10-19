@@ -22,9 +22,9 @@ class UsersController < ApplicationController
       log_in(@user)
       cookies.signed[:user_id] = @user.id
       redirect_to root_url
+      flash[:success] = "こんにちは、#{@user.name}さん"
     else
       render 'new'
-      flash[:danger] = "faild to create your account"
     end
   end
 

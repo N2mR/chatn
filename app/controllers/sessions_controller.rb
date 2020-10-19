@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
       log_in user
       cookies.signed[:user_id] = user.id
       redirect_to root_url
-      flash[:success] = "こんにちわ、#{user.name}さん"
+      flash[:success] = "こんにちは、#{user.name}さん"
     else
       flash.now[:danger] = "Invalid email/password combination"
       render 'new'

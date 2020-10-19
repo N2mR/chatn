@@ -111,4 +111,7 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   config.force_ssl = true
+
+  #action cable
+  config.action_cable.allowed_request_origins = [ /http:\/\/.*/ ]
 end
