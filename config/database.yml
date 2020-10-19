@@ -26,10 +26,10 @@ test:
 
 production:
   adapter: postgresql
-  encoding: unicode
+  encoding: utf8
   # For details on connection pooling, see Rails configuration guide
   # https://railsguides.jp/configuring.html#データベース接続をプールする
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: chatn
   username: nnmr113
-  password: <%= ENV['SAMPLE_APP_DATABASE_PASSWORD'] %>
+  password: Ayumu113
+  
