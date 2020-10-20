@@ -19,7 +19,7 @@
                                     <ul class="room_data" id="room<%= room.id %>">
                                         <li class="room_data_user_name"><%= other_user.name %></li>
                                         <li class="room_data_message"><%= get_newest_message(room) %></li>
-                                        <li class="room_data_created_at"><%= room.created_at %></li>
+                                        <li class="room_data_created_at"><%= room.created_at.strftime('%Y/%m/%d %H:%M') %></li>
                                         <li class="room_data_talk"><%= link_to 'talk', room_path(room.id), class:"talk_button", 
                                                     data: {"turbolinks" => false} %></li>
                                         <li class="room_data_delete"><%= link_to 'delete', room_path(room.id), method: :delete, id:'room_delete',

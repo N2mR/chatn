@@ -63,7 +63,7 @@ class RoomChannel < ApplicationCable::Channel
     private
 
     def send_message_with_action_cable(message)
-      ActionCable.server.broadcast "room_#{message.room_id}", message: message.content, created_at: message.created_at
+      ActionCable.server.broadcast "room_#{message.room_id}", message: message.content, created_at: message.created_at.strftime('%Y/%m/%d %H:%M')
     end
 
 end

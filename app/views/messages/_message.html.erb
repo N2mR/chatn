@@ -6,7 +6,7 @@
                     <div class="users_message message">
                         <div id="message-<%= message.id %>">
                                 <p><%= message.content %></p>
-                                <p><%= message.created_at %></p>
+                                <p><%= message.created_at.strftime('%Y/%m/%d %H:%M') %></p>
                         </div>
                     </div>
                 </div>
@@ -15,7 +15,7 @@
                     <div class="other_users_message message">
                         <div id="message-<%= message.id %>">
                                 <p><%= message.content %></p>
-                                <p><%= message.created_at %></p>
+                                <p><%= message.created_at.strftime('%Y/%m/%d %H:%M') %></p>
                         </div>
                     </div>
                 </div>

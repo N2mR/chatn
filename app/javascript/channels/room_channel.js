@@ -88,14 +88,25 @@ document.addEventListener("turbolinks:load", function(){
   chatChannel.cookies();
 
   //現在時刻を取得
+  
+  //数字が一桁であれば０で埋める
+  var toDoubleDigits = function(num) {
+    num += "";
+    if (num.length === 1) {
+      num = "0" + num;
+    }
+   return num;
+  } 
+  
   function get_current_time(){
-    var DD = new Date();
-    var Year = DD.getFullYear();
-    var Month = DD.getMonth() + 1;
-    var Day = DD.getDate();
-    var Hour = DD.getHours();
-    var Minutes = DD.getMinutes();
-    return `${Year}-${Month}-${Day}-${Hour}:${Minutes}`
+    
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = toDoubleDigits(date.getMonth() + 1);
+    var day = toDoubleDigits(date.getDate());
+    var hour = toDoubleDigits(date.getHours());
+    var minute = toDoubleDigits(date.getMinutes());
+    return `${year}/${month}/${day} ${hour}:${minute}`;
   };
   
 
