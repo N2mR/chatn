@@ -22,7 +22,7 @@ class RoomsController < ApplicationController
 
   def create
     #ユーザがトークでルームを作った場合
-    @room = Room.new
+    @room = Room.new(room_params)
     @user = current_user
     @other_user = User.find(params[:other_user_id])
     @room.user_id = @user.id
@@ -47,6 +47,9 @@ class RoomsController < ApplicationController
   end
 
   private
+    def room_params
+      params.permit(:user_id, :other_user_id)
+    end
     
     
 

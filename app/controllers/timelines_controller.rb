@@ -5,7 +5,7 @@ class TimelinesController < ApplicationController
   end
 
   def create
-    @timeline = Timeline.new
+    @timeline = Timeline.new(timeline_params)
     @content = params[:content]
     @timeline.content = @content
     @timeline.user_id = current_user.id
@@ -29,7 +29,7 @@ class TimelinesController < ApplicationController
 
   private
     def timeline_params
-      params.require(:timeline).permit(:content,:user_id)
+      params.permit(:content,:user_id)
     end
 
     def following_user

@@ -9,5 +9,7 @@ class RelationshipsController < ApplicationController
   def destroy
     @relationship = current_user.active_relationships.find_by(followed_id: params[:id])
     current_user.remove_my_friend(@relationship)
-   end
+  end
+
+
 end
