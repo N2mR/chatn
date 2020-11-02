@@ -50,8 +50,6 @@ class RoomChannel < ApplicationCable::Channel
         @other_message.save
         send_message_with_action_cable(@other_message)
       end
-      
-    else
     end
     
   end

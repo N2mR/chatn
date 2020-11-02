@@ -9,9 +9,6 @@ class UsersController < ApplicationController
     
   end
 
-  def show
-  end
-
   def new
     @user = User.new
   end
@@ -28,19 +25,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def update
-  end
-
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-  end
-
-
-  def following
   end
 
   private

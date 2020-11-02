@@ -1,11 +1,3 @@
- <!--
- <%= form_with(url: messages_path, id:'new_message') do |f| %>
-    <%= f.hidden_field :room_id, value: @room.id %>
-    <%= f.text_field :content, rows: 10 %>
-    <%= f.submit '送信', class: 'btn btn-primary', id:'send_message', 'data-disable-with' => false %>
- <% end %>
- -->
-
 <div class="message_form">
    <textarea name="content" id="send_message_form" id="content"data-behavior="room_speaker" rows="1" placeholder="メッセージを送信"></textarea>
 </div>

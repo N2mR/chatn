@@ -17,9 +17,6 @@ class RoomsController < ApplicationController
     @messages = Message.where(room_id: @room.id).order(room_id: "DESC")
   end
 
-  def new
-  end
-
   def create
     #ユーザがトークでルームを作った場合
     @room = Room.new(room_params)
@@ -51,7 +48,5 @@ class RoomsController < ApplicationController
       params.permit(:user_id, :other_user_id)
     end
     
-    
-
 
 end

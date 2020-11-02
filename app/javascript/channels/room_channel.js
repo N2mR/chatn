@@ -58,15 +58,6 @@ document.addEventListener("turbolinks:load", function(){
     });
   }
 
-  
-
-
-  
-
-  
-  // document.addEventListener("turbolinks:load", function(){
-  //     reload();
-  // });
 
   //一番下までスクロール
   function scrollBottom(object){
@@ -87,7 +78,6 @@ document.addEventListener("turbolinks:load", function(){
 
   chatChannel.cookies();
 
-  //現在時刻を取得
   
   //数字が一桁であれば０で埋める
   var toDoubleDigits = function(num) {
@@ -97,6 +87,9 @@ document.addEventListener("turbolinks:load", function(){
     }
    return num;
   } 
+  
+
+  //現在時刻を取得
   
   function get_current_time(){
     
