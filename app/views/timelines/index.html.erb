@@ -10,10 +10,13 @@
     <div class="display_timeline">
         <% if @timelines %>
             <% @timelines.each do |timeline| %>
-                <div class="timeline_container">
+                <div class="timeline_container" id="timeline<%= timeline.id %>">
                     <p><%= find_user(timeline.user_id).name %></p>
                     <p><%= timeline.content %></p>
-                    <p><%= timeline.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+                    <p><%= timeline.created_at.strftime('%Y/%m/%d %H:%M') %>
+                        <span style='margin-left: 10px;'><%= link_to '削除', timeline_path(timeline.id), method: :delete, 
+                           data: { confirm: 'タイムラインを削除してもよろしいですか?' }, remote: true %></span>
+                    </p>
                 </div>
             <% end %>
         <% else %>

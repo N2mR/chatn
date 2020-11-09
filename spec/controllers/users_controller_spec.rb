@@ -4,7 +4,7 @@ include SessionsHelper
 RSpec.describe UsersController, type: :controller do
 	describe 'UsersControllerのテスト', type: :test_helper do
     before do 
-      before_action
+      before_test
     end
 
     context "index" do
@@ -25,29 +25,26 @@ RSpec.describe UsersController, type: :controller do
         end
         
         it 'emailのフォーマット' do 
-          @user = User.new(name: 'sample1', email: 'hogehoge', password: 'password',
-                           password_confirmation: 'password', search_id: 'sample1')
+          @user.email = 'hogehoge'
           expect(@user.valid?).to eq false
           expect(@user.errors.full_messages).to eq ["Email is invalid"]
         end
 
         it 'passwordの文字数' do 
-          @user = User.new(name: 'sample1', email: 'sample1@sample.com', password: 'aaaaaaaaaaa' * 5,
-                           password_confirmation: 'aaaaaaaaaaa' * 5, search_id: 'sample1')
+          @user.password = 'aaaaaaaaaaa' * 5
+          @user.password_confirmation = 'aaaaaaaaaaa' * 5
           expect(@user.valid?).to eq false
           expect(@user.errors.full_messages).to eq ["Password is too long (maximum is 50 characters)"]
         end
 
         it 'passwordが確認と一致しない場合' do 
-          @user = User.new(name: 'sample1', email: 'sample1@sample.com', password: 'password',
-                           password_confirmation: 'hogehoge', search_id: 'sample1')
+          @user.password_confirmation = 'hogehoge'
           expect(@user.valid?).to eq false
           expect(@user.errors.full_messages).to eq ["Password confirmation doesn't match Password"]
         end
 
         it 'search_idの文字数は11文字以下' do 
-          @user = User.new(name: 'sample1', email: 'sample1@sample.com', password: 'password',
-                           password_confirmation: 'password', search_id: 'aaaaaaaaaaaa')
+          @user.search_id = 'aaaaaaaaaaaa'
           expect(@user.valid?).to eq false
           expect(@user.errors.full_messages).to eq ["Search is too long (maximum is 11 characters)"]
         end

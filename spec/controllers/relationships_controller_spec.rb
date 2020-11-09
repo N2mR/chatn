@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe RelationshipsController, type: :controller do
   describe 'RelationshipsControllerのテスト', type: :test_helper do 
     before do 
-      before_action
+      before_test
     end
 
     describe 'create' do 

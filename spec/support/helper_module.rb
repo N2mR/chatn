@@ -17,7 +17,7 @@ module TestHelper
     expect(response).to redirect_to root_url
   end
 
-  def before_action
+  def before_test
     @user =  create(:user)
     session[:user_id] = @user.id
     @other_user = create(:sample1)

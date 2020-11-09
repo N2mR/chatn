@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe RoomsController, type: :controller do
   describe 'rooms', type: :test_helper do 
     before do 
-        before_action
+        before_test
     end
 
     describe 'index' do 
@@ -25,12 +25,10 @@ RSpec.describe RoomsController, type: :controller do
     end
 
     describe 'show' do 
-      context 'トーク画面に変遷しているかどうか' do
-        it 'http status' do 
-          @room = Room.create!(user_id: @user.id , other_user_id: @other_user.id)
-          get :show , params: { id: @room.id }
-          expect(response).to have_http_status '200'
-        end
+      it 'トーク画面に変遷しているかどうか' do 
+        @room = Room.create!(user_id: @user.id , other_user_id: @other_user.id)
+        get :show , params: { id: @room.id }
+        expect(response).to have_http_status '200'
       end
     end
 
@@ -51,6 +49,12 @@ RSpec.describe RoomsController, type: :controller do
     end
 
     describe 'destroy' do 
+      it '正常に削除できているかどうか' do 
+        @room = Room.create!(user_id: @user.id , other_user_id: @other_user.id)
+        expect(Room.all.count).to eq 1
+        @room.destroy
+        expect(Room.all.count).to eq 0
+      end
     end
   end
 
