@@ -14,8 +14,10 @@
                     <p><%= find_user(timeline.user_id).name %></p>
                     <p><%= timeline.content %></p>
                     <p><%= timeline.created_at.strftime('%Y/%m/%d %H:%M') %>
-                        <span style='margin-left: 10px;'><%= link_to '削除', timeline_path(timeline.id), method: :delete, 
+                        <% if current_user.id == timeline.user_id %>
+                            <span style='margin-left: 10px;'><%= link_to '削除', timeline_path(timeline.id), method: :delete, 
                            data: { confirm: 'タイムラインを削除してもよろしいですか?' }, remote: true %></span>
+                        <% end%>
                     </p>
                 </div>
             <% end %>
