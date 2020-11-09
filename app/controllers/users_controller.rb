@@ -6,7 +6,6 @@ class UsersController < ApplicationController
     if params[:search]
       @search_user = User.find_by(search_id: "#{params[:search]}")
     end
-    
   end
 
   def new

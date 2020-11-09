@@ -8,8 +8,7 @@ class SessionsController < ApplicationController
       redirect_to root_url
       flash[:success] = "こんにちは、#{user.name}さん"
     else
-      flash.now[:danger] = "Invalid email/password combination"
-      render 'new'
+      redirect_to login_path, flash:{danger:'メールアドレスとパスワードが一致しません'}
     end
   end
 

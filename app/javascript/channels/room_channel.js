@@ -127,7 +127,6 @@ document.addEventListener("turbolinks:load", function(){
       chatChannel.speak(room_data);
       send_message_form.value = '';
       createHTML = '';
-      // return event.preventDefault();
       }else if(content.length >= 140){
         send_message_form.value = '';
       }
