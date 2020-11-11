@@ -20,7 +20,6 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    binding.pry
     @room_data = data['data']
 
     @room_id = @room_data['room_id']
