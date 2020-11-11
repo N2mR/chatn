@@ -26,6 +26,7 @@ RSpec.describe UsersController, type: :controller do
         
         it 'emailのフォーマット' do 
           @user.email = 'hogehoge'
+          get :new
           expect(@user.valid?).to eq false
           expect(@user.errors.full_messages).to eq ["Email is invalid"]
         end
@@ -33,18 +34,21 @@ RSpec.describe UsersController, type: :controller do
         it 'passwordの文字数' do 
           @user.password = 'aaaaaaaaaaa' * 5
           @user.password_confirmation = 'aaaaaaaaaaa' * 5
+          get :new
           expect(@user.valid?).to eq false
           expect(@user.errors.full_messages).to eq ["Password is too long (maximum is 50 characters)"]
         end
 
         it 'passwordが確認と一致しない場合' do 
           @user.password_confirmation = 'hogehoge'
+          get :new
           expect(@user.valid?).to eq false
           expect(@user.errors.full_messages).to eq ["Password confirmation doesn't match Password"]
         end
 
         it 'search_idの文字数は11文字以下' do 
           @user.search_id = 'aaaaaaaaaaaa'
+          get :new
           expect(@user.valid?).to eq false
           expect(@user.errors.full_messages).to eq ["Search is too long (maximum is 11 characters)"]
         end

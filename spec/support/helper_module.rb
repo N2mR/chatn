@@ -23,6 +23,11 @@ module TestHelper
     @other_user = create(:sample1)
   end
 
+  def create_user
+    @user = create(:user)
+    @other_user = create(:sample1)
+  end
+
 end
 
 RSpec.configure do |config|
