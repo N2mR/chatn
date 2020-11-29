@@ -15,8 +15,10 @@
   
 # ⛏Usage<br>
   デプロイ（Heroku）👉　[こちら](https://intense-dawn-56700.herokuapp.com/login)<br>
+  
     sample1@sample.com    sample2@sample.com<br>
     password              password<br>
+    
   $ git clone https://github.com/N2mR/chatn.git<br>
   $ cd chatn<br>
   $ bundle install<br>
