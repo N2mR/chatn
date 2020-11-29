@@ -3,7 +3,9 @@
   Chatn<br>
   
 # 📚Feachure<br>
-
+  
+  フレームワークはRuby on Rails, バックエンドはRuby,<br>
+  フロントエンドはJavaScriptでチャットアプリを作成しました。<br>
   ActionCableを用いることにより、<br>
   低コストかつ、リアルタイムでメッセージを送受信<br>
   することが可能です。<br>
@@ -24,5 +26,7 @@
   $ cd chatn<br>
   $ bundle install<br>
   $ rails server<br>
+
+# 💁‍
   
 
