@@ -27,6 +27,13 @@
   $ bundle install<br>
   $ rails server<br>
 
-# 💁‍
+# 💁‍Author
+  野邑　歩夢
+  佛教大学
+  a.n.11.3.ice@ezweb.ne.jp
+
+#License
+  Copyright (c) 2020 Ayumu Nomura
+
   
 
