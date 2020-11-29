@@ -12,4 +12,10 @@
 
   ruby 2.5.8<br>
   Ruby on Rails 6.0.3<br>
+  
+# ⛏Usage<br>
+
+  git clone https://github.com/N2mR/chatn.git
+  cd chatn
+  rails server
 
