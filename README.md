@@ -6,6 +6,7 @@
   
   フレームワークはRuby on Rails, バックエンドはRuby,<br>
   フロントエンドはJavaScriptでチャットアプリを作成しました。<br>
+  MySQL(development), postgreSQL(production)を使用しています<br>
   ActionCableを用いることにより、<br>
   低コストかつ、リアルタイムでメッセージを送受信<br>
   することが可能です。<br>
