@@ -15,7 +15,8 @@
   
 # ⛏Usage<br>
 
-  git clone https://github.com/N2mR/chatn.git
-  cd chatn
-  rails server
+  $ git clone https://github.com/N2mR/chatn.git<br>
+  $ cd chatn<br>
+  $ rails server<br>
+  
 
