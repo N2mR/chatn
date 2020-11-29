@@ -1,4 +1,4 @@
-##✏️NAME<br>
+##NAME<br>
   Chatn<br>
 ##📚Feachure<br>
   ActionCableを用いることにより、<br>
