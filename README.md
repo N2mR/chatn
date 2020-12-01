@@ -2,6 +2,9 @@
   
   Chatn<br>
   
+# ☝️Demo<br>
+  ![operate](https://user-images.githubusercontent.com/65766343/100765452-db7bc000-343a-11eb-9904-c88ad93133a4.gif)<br>
+  
 # 📚Feachure<br>
   
   フレームワークはRuby on Rails、 バックエンドはRuby、<br>
