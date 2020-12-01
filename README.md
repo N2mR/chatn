@@ -3,9 +3,9 @@
   Chatn<br>
   
 # ☝️Demo<br>
-  ログインから友達追加までの操作
+  ログインから友達追加までの操作<br>
   ![operate](https://user-images.githubusercontent.com/65766343/100765452-db7bc000-343a-11eb-9904-c88ad93133a4.gif)<br>
-  メッセージの送信
+  メッセージの送信<br>
   ![send_message](https://user-images.githubusercontent.com/65766343/100765866-55ac4480-343b-11eb-920d-1635a94faa67.gif)<br>
   
 # 📚Feachure<br>
