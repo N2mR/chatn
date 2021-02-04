@@ -32,6 +32,7 @@
   $ git clone https://github.com/N2mR/chatn.git<br>
   $ cd chatn<br>
   $ bundle install<br>
+  $ rails db:migrate<br>
   $ rails server<br>
 
 # 💁‍Author<br>
